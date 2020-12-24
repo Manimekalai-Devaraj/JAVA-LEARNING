@@ -1,12 +1,28 @@
 interface ManPower{
     // member variables (By default it will be public static final)
     int EmployeeId =1000042;
-
+    String EmployeeName = "Manimekalai";
+    String Designation = "Software Engineer";
     // member functions (by default it will be public abstract method)
     double CalculateManPower(int Worker, double Wages);
     void  BuildingType();
 
 
+    // we can have the default method in  the interface // from java8 onwards
+    default String ManagerName(){
+        return EmployeeName;
+    }
+
+    /* This is a static method. Static method in interface is
+     * similar to default method except that we cannot override 
+     * them in the implementation classes.
+     * Similar to default methods, we no need to implement these methods
+     * in implementation classes so we can safely add them to the 
+     * existing interfaces.
+     */
+    static String DesignationDetails(){
+        return Designation;
+    }
     // throws error because no method definition allowed
     // public int hours(){}
 }
@@ -39,7 +55,10 @@ public class interfaceMainClass implements Management{ // Called multiple inheri
         System.out.println("Calling Management interface methods: "+EMObj.AllocatedManPower(12,400));
         EMObj.BuildingType();
         System.out.println("Access interface member variable: "+EMObj.EmployeeId);
-        
+
+        // call static and default methods
+        System.out.println("Access interface default methods ManagerName(): "+EMObj.ManagerName());
+        System.out.println("Access interface static methods DesignationDetails(): "+ManPower.DesignationDetails());
         // throw an error because cannot able to update final variable values
         // EMObj.EmployeeId = 1000043;
     }
