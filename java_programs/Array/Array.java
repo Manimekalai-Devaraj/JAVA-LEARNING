@@ -77,13 +77,9 @@ public class Array {
         subjects.add("Maths");
         subjects.add("Science");
         subjects.add("Social Science");
+        subjects.add("Time");
         System.out.println("Before: "+subjects);
         
-        // remove item
-        subjects.remove("English");
-        subjects.remove(1);
-        System.out.println("After remove the elements: "+subjects);
-
         // add item
         subjects.add("Hindi");
         System.out.println("After adding the elements: "+subjects);
@@ -105,8 +101,39 @@ public class Array {
         // sort array list
         Collections.sort(subjects);
         System.out.println("After sorting the array list: "+subjects);
+
+        // inserting all elements of subjects to arrlist from the third position 
+        ArrayList<String> arrlist = new ArrayList<String>();
+        arrlist.add("Time");
+        arrlist.add("Time1");
+        arrlist.addAll(2, subjects); 
+        System.out.println("Add items from one array list to another list "+arrlist.toString());
+
+        // remove item
+        subjects.remove("English");
+        subjects.remove(1);
+        System.out.println("After remove the elements: "+subjects);
+
+        arrlist.removeAll(subjects);
+        System.out.println("After removeAll the elements: "+subjects);
+        System.out.println("After removeAll the elements: "+arrlist);
+
+        System.out.println("After removeIf(): "+subjects.removeIf(n -> (n == "Time")));
+
+        // contains
+        System.out.println("Array list contains() "+arrlist.contains("Time1")+" "+arrlist.contains("Time112"));
+        
+        System.out.println("Array list indexOf() "+arrlist.indexOf("Time1"));
+
+        System.out.println("Array list isEmpty() "+arrlist.isEmpty()); // either true or false
+
+        System.out.println("Array list isEmpty() "+arrlist.isEmpty()); // either true or false
+
         // clear all the elements
         subjects.clear();
         System.out.println("After clearing the array list: "+subjects);
+
+        
+
     }
 }
